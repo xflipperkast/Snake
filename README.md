@@ -10,7 +10,7 @@ easy to add or edit the gamemodes in the script file
 
 ## GameModes
 
-| GameModes |
+| Game | Mode |
 | ------ | ------ |
 | Easy | Snake moves slower and more food on the map. |
 | Medium | Snake moves normal speed and less food. |
