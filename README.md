@@ -29,12 +29,12 @@ easy to add or edit the gamemodes in the script file
 
 ##Score
 | Score |
-| ------ | ------ |
+| ------ |
 | score counter |
 | alers when dead and shown score |
 
 ##Snake
-| Score |
+| Score | edit |
 | ------ | ------ |
 | edit the snake all you want |
 | head-up,head-down,head-left,head-right.png for the snake's head |
