@@ -20,7 +20,7 @@ easy to add or edit the gamemodes in the script file
 ## Foods
 
 | Food |
-| ------ | ------ |
+| ------ |
 | apple |
 | orange |
 | bagel |
