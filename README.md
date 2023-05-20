@@ -25,7 +25,7 @@ easy to add or edit the gamemodes in the script file
 | orange |
 | bagel |
 | melon |
-| Code: Easy to add new foods since its randomized just add a new image to the images and edit the code where the foods are shows and add the file path the food will spawn with that texture. |
+Code: Easy to add new foods since its randomized just add a new image to the images and edit the code where the foods are shows and add the file path the food will spawn with that texture.
 
 ## Score
 | Score |
