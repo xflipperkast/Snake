@@ -1,16 +1,16 @@
-var dotSize = 20;
-var direction = 'Right';
-var gameBoard = document.getElementById('game-board');
-var scoreBoard = document.getElementById('score');
-var message = document.getElementById('message');
-var settings = document.getElementById('settings');
-var score = 0;
-var snake = [{ top: 0, left: 0 }];
-var food = [];
-var initialDot = null;
-var foodLimit = 7;
-var speed = null;
-var gameStarted = false;
+let dotSize = 20;
+let direction = 'Right';
+const gameBoard = document.getElementById('game-board');
+const scoreBoard = document.getElementById('score');
+const message = document.getElementById('message');
+const settings = document.getElementById('settings');
+let score = 0;
+let snake = [{ top: 0, left: 0 }];
+let food = [];
+let initialDot = null;
+let foodLimit = 7;
+let speed = null;
+let gameStarted = false;
 
 function setGameMode(mode) {
   switch(mode) {
@@ -31,14 +31,14 @@ function setGameMode(mode) {
 }
 
 function createDot(top, left, id, isFood = false, isHead = false, direction = 'Right') {
-  var dot = document.createElement('div');
+  const dot = document.createElement('div');
   dot.classList.add('dot');
   dot.style.left = `${left}px`;
   dot.style.top = `${top}px`;
   dot.id = id;
 
   if (isFood) {
-    var imageUrl = getRandomImage();
+    const imageUrl = getRandomImage();
     dot.style.background = `url(${imageUrl})`;
     dot.style.backgroundSize = 'cover';
   } else if (isHead) {
@@ -53,13 +53,13 @@ function createDot(top, left, id, isFood = false, isHead = false, direction = 'R
 }
 
 function getRandomImage() {
-var images = ['orange.png', 'apple.png', 'melon.png', 'begal.png'];  // replace these with your actual image names
-var index = Math.floor(Math.random() * images.length);
+const images = ['orange.png', 'apple.png', 'melon.png', 'begal.png'];  // replace these with your actual image names
+const index = Math.floor(Math.random() * images.length);
 return 'images/' + images[index];  // replace with your actual image folder path
 }
 
 function updateSnake() {
-  var head = Object.assign({}, snake[0]); // copy head
+  let head = Object.assign({}, snake[0]); // copy head
   switch (direction) {
     case 'Left':
       head.left -= dotSize;
@@ -80,15 +80,15 @@ function updateSnake() {
 function gameLoop() {
 if(speed === null) return;  // don't start the game loop until the game mode is set
 updateSnake();
-var foodIndex = food.findIndex(f => f.style.top === `${snake[0].top}px` && f.style.left === `${snake[0].left}px`);
+const foodIndex = food.findIndex(f => f.style.top === `${snake[0].top}px` && f.style.left === `${snake[0].left}px`);
 if (foodIndex > -1) { // snake found food
 score++;
 scoreBoard.textContent = `Score: ${score}`;
 food[foodIndex].remove();
 food.splice(foodIndex, 1);
 } else {
-var tail = snake.pop(); // remove tail
-var tailElement = document.getElementById(tail.id);
+const tail = snake.pop(); // remove tail
+let tailElement = document.getElementById(tail.id);
 if (tailElement !== null) {
   tailElement.remove();
 }
@@ -100,7 +100,7 @@ return gameOver();
 }
 
 // check snake collides with itself
-for (var i = 1; i < snake.length; i++) {
+for (let i = 1; i < snake.length; i++) {
 if (snake[i].top === snake[0].top && snake[i].left === snake[0].left) {
   return gameOver();
 }
@@ -108,8 +108,8 @@ if (snake[i].top === snake[0].top && snake[i].left === snake[0].left) {
 
 // update the previous head to be a body
 if (snake.length > 1) {
-var previousHeadId = `dot-${snake[1].top}-${snake[1].left}`;
-var previousHeadElement = document.getElementById(previousHeadId);
+const previousHeadId = `dot-${snake[1].top}-${snake[1].left}`;
+const previousHeadElement = document.getElementById(previousHeadId);
 if (previousHeadElement !== null) {
   previousHeadElement.style.background = `url(images/body-${direction}.png)`;
   previousHeadElement.style.backgroundSize = 'cover';
@@ -117,12 +117,12 @@ if (previousHeadElement !== null) {
 }
 
 // create new head
-var headId = `dot-${snake[0].top}-${snake[0].left}`;
+const headId = `dot-${snake[0].top}-${snake[0].left}`;
 snake[0].id = headId;
 createDot(snake[0].top, snake[0].left, headId, false, true, direction);
 
 while (food.length < foodLimit) {
-var left, top;
+let left, top;
 do {
   left = Math.floor(Math.random() * (gameBoard.offsetWidth - dotSize)/dotSize) * dotSize;
   top = Math.floor(Math.random() * (gameBoard.offsetHeight - dotSize)/dotSize) * dotSize;
